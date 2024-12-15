@@ -31,16 +31,16 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO food.american (AR_name, AR_price) VALUES
-('Apple Pie', 16.00),
-('Cheeseburger', 7.25),
-('Grilled Salmon and Brown Butter Couscous', 50.25),
-('Lobster Rolls', 119.25),
-('Buffalo Wings 12 pcs', 35.97),
-('Chicago Deep Dish Pizza', 20.00),
-('Chicken Fried Steak with Milk Gravy', 50.25),
-('Macroni and Cheese', 4.25),
-('Peanut Butter Sandwich', 10.14),
-('Barbecue Ribs 4 pcs', 80.00);
+                                                  ('Apple Pie', 16.00),
+                                                  ('Cheeseburger', 7.25),
+                                                  ('Grilled Salmon and Brown Butter Couscous', 50.25),
+                                                  ('Lobster Rolls', 119.25),
+                                                  ('Buffalo Wings 12 pcs', 35.97),
+                                                  ('Chicago Deep Dish Pizza', 20.00),
+                                                  ('Chicken Fried Steak with Milk Gravy', 50.25),
+                                                  ('Macroni and Cheese', 4.25),
+                                                  ('Peanut Butter Sandwich', 10.14),
+                                                  ('Barbecue Ribs 4 pcs', 80.00);
 
 
 -- -----------------------------------------------------
