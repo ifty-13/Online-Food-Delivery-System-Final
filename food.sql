@@ -123,16 +123,16 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO `food`.`indian` (IND_name, IND_price) VALUES
-('Murg Makhni', 20.55),
-('Tandoori Chicken', 20.45),
-('Malai Kofta', 18.10),
-('Veg Kolhapuri', 15.10),
-('Cheese Vada Pav', 2.20),
-('Biryani', 15.25),
-('Paneer Tikka Masala', 20.25),
-('Butter Naan', 1.15),
-('Masala Papad', 0.30),
-('Chai', 2.0);
+                                                      ('Murg Makhni', 20.55),
+                                                      ('Tandoori Chicken', 20.45),
+                                                      ('Malai Kofta', 18.10),
+                                                      ('Veg Kolhapuri', 15.10),
+                                                      ('Cheese Vada Pav', 2.20),
+                                                      ('Biryani', 15.25),
+                                                      ('Paneer Tikka Masala', 20.25),
+                                                      ('Butter Naan', 1.15),
+                                                      ('Masala Papad', 0.30),
+                                                      ('Chai', 2.0);
 
 -- -----------------------------------------------------
 -- Table `food`.`italian`
