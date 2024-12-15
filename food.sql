@@ -88,13 +88,13 @@ INSERT INTO `food`.`details` VALUES (3, 'rishijoshi25', 'rishijoshi', 'rishijosh
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `food`.`french` (
-  `FR_id` INT NOT NULL AUTO_INCREMENT,
-  `FR_name` VARCHAR(50) NOT NULL,
-  `FR_price` DECIMAL(15,2) NOT NULL,
-  PRIMARY KEY (`FR_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+                                               `FR_id` INT NOT NULL AUTO_INCREMENT,
+                                               `FR_name` VARCHAR(50) NOT NULL,
+    `FR_price` DECIMAL(15,2) NOT NULL,
+    PRIMARY KEY (`FR_id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO `food`.`french` (FR_name, FR_price) VALUES
                                                     ('Soupe à l’oignon ', 10.25),
