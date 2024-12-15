@@ -22,13 +22,13 @@ USE `food` ;
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `food`.`american` (
-  `AR_id` INT NOT NULL AUTO_INCREMENT,
-  `AR_name` VARCHAR(50) NOT NULL,
-  `AR_price` DECIMAL(15,2) NOT NULL,
-  PRIMARY KEY (`AR_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+                                                 `AR_id` INT NOT NULL AUTO_INCREMENT,
+                                                 `AR_name` VARCHAR(50) NOT NULL,
+    `AR_price` DECIMAL(15,2) NOT NULL,
+    PRIMARY KEY (`AR_id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO food.american (AR_name, AR_price) VALUES
                                                   ('Apple Pie', 16.00),
