@@ -114,13 +114,13 @@ INSERT INTO `food`.`french` (FR_name, FR_price) VALUES
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `food`.`indian` (
-  `IND_id` INT NOT NULL AUTO_INCREMENT,
-  `IND_name` VARCHAR(50) NOT NULL,
-  `IND_price` DECIMAL(15,2) NOT NULL,
-  PRIMARY KEY (`IND_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+                                               `IND_id` INT NOT NULL AUTO_INCREMENT,
+                                               `IND_name` VARCHAR(50) NOT NULL,
+    `IND_price` DECIMAL(15,2) NOT NULL,
+    PRIMARY KEY (`IND_id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO `food`.`indian` (IND_name, IND_price) VALUES
                                                       ('Murg Makhni', 20.55),
