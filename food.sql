@@ -168,15 +168,15 @@ INSERT INTO `food`.`italian` (ITA_name, ITA_price) VALUES
 -- DROP TABLE food.cart;
 
 CREATE TABLE IF NOT EXISTS `food`.`cart`(
-	`item_id` INT NOT NULL AUTO_INCREMENT,
-    `item_name` VARCHAR(40),
+                                            `item_id` INT NOT NULL AUTO_INCREMENT,
+                                            `item_name` VARCHAR(40),
     `item_price` DECIMAL(15,2),
     `item_quantity` INT,
     PRIMARY KEY (`item_id`)
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+    )
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
 ;
 
 -- -----------------------------------------------------
