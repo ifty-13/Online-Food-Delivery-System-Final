@@ -47,16 +47,16 @@ INSERT INTO food.american (AR_name, AR_price) VALUES
 -- Table `food`.`card_details`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `food`.`card_details` (
-  `holder` VARCHAR(30) NOT NULL,
-  `card_no` VARCHAR(20) NOT NULL,
-  `card_type` VARCHAR(20) NOT NULL,
-  `cvv` CHAR(4) NOT NULL,
-  `exp` VARCHAR(20) NOT NULL,
-  `country` VARCHAR(20) NULL DEFAULT NULL,
-  `balance` FLOAT NULL DEFAULT NULL)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+                                                     `holder` VARCHAR(30) NOT NULL,
+    `card_no` VARCHAR(20) NOT NULL,
+    `card_type` VARCHAR(20) NOT NULL,
+    `cvv` CHAR(4) NOT NULL,
+    `exp` VARCHAR(20) NOT NULL,
+    `country` VARCHAR(20) NULL DEFAULT NULL,
+    `balance` FLOAT NULL DEFAULT NULL)
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
