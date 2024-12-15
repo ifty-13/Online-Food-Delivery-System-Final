@@ -139,13 +139,13 @@ INSERT INTO `food`.`indian` (IND_name, IND_price) VALUES
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `food`.`italian` (
-  `ITA_id` INT NOT NULL AUTO_INCREMENT,
-  `ITA_name` VARCHAR(100) NOT NULL,
-  `ITA_price` DECIMAL(15,2) NOT NULL,
-  PRIMARY KEY (`ITA_id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+                                                `ITA_id` INT NOT NULL AUTO_INCREMENT,
+                                                `ITA_name` VARCHAR(100) NOT NULL,
+    `ITA_price` DECIMAL(15,2) NOT NULL,
+    PRIMARY KEY (`ITA_id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO `food`.`italian` (ITA_name, ITA_price) VALUES
                                                        ('Caprese Salad with Pesto Sauce', 12.95),
