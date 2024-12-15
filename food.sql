@@ -97,17 +97,17 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO `food`.`french` (FR_name, FR_price) VALUES
-('Soupe à l’oignon ', 10.25),
-('Butter Croissant', 1.75),
-('Coq au vin', 25.85),
-('Cassoulet', 18.99),
-('Boeuf bourguignon', 45.95),
-('Chocolate soufflé', 12.99),
-('Flamiche', 13.25),
-('Confit de canard', 55.75),
-('Salade Niçoise', 15.25),
-('Ratatouille', 20.25),
-('Tarte Tatin', 15.75);
+                                                    ('Soupe à l’oignon ', 10.25),
+                                                    ('Butter Croissant', 1.75),
+                                                    ('Coq au vin', 25.85),
+                                                    ('Cassoulet', 18.99),
+                                                    ('Boeuf bourguignon', 45.95),
+                                                    ('Chocolate soufflé', 12.99),
+                                                    ('Flamiche', 13.25),
+                                                    ('Confit de canard', 55.75),
+                                                    ('Salade Niçoise', 15.25),
+                                                    ('Ratatouille', 20.25),
+                                                    ('Tarte Tatin', 15.75);
 
 -- -----------------------------------------------------
 -- Table `food`.`indian`
