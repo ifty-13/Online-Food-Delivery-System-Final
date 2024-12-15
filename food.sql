@@ -66,19 +66,19 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- DROP TABLE details;
 
 CREATE TABLE IF NOT EXISTS `food`.`details` (
-  `user_id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(20) NOT NULL UNIQUE,
-  `passwd` VARCHAR(20) NOT NULL,
-  `email` VARCHAR(50) NOT NULL,
-  `firstname` VARCHAR(20) NULL DEFAULT NULL,
-  `lastname` VARCHAR(20) NULL DEFAULT NULL,
-  `phone` VARCHAR(10) NULL DEFAULT NULL,
-  `state` VARCHAR(20) NULL DEFAULT NULL,
-  PRIMARY KEY (`user_id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 3
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+                                                `user_id` INT NOT NULL AUTO_INCREMENT,
+                                                `username` VARCHAR(20) NOT NULL UNIQUE,
+    `passwd` VARCHAR(20) NOT NULL,
+    `email` VARCHAR(50) NOT NULL,
+    `firstname` VARCHAR(20) NULL DEFAULT NULL,
+    `lastname` VARCHAR(20) NULL DEFAULT NULL,
+    `phone` VARCHAR(10) NULL DEFAULT NULL,
+    `state` VARCHAR(20) NULL DEFAULT NULL,
+    PRIMARY KEY (`user_id`))
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 3
+    DEFAULT CHARACTER SET = utf8mb4
+    COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO `food`.`details` (user_id, username, passwd, email) VALUES (1, 'admin', 'admin', 'admin@gmail.com');
 INSERT INTO `food`.`details` (user_id, username, passwd, email) VALUES (2, 'manager', 'manager', 'manager@gmail.com');
