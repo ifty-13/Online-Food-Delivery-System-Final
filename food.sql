@@ -148,18 +148,18 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 INSERT INTO `food`.`italian` (ITA_name, ITA_price) VALUES
-('Caprese Salad with Pesto Sauce', 12.95),
-('Panzenella', 15.95),
-('Bruschetta', 3.25),
-('Focaccia Bread', 6.25),
-('Pasta Carbonara', 12.00),
-('Margherita Pizza', 15.75),
-('Mushroom Risotto', 30.00),
-('Pasta Con Pomodoro E Basilico', 25.65),
-('Tiramisu', 20.00),
-('Lasagna', 55.75),
-('Pistachio Panna Cotta', 10.15),
-('Panettone', 7.95);
+                                                       ('Caprese Salad with Pesto Sauce', 12.95),
+                                                       ('Panzenella', 15.95),
+                                                       ('Bruschetta', 3.25),
+                                                       ('Focaccia Bread', 6.25),
+                                                       ('Pasta Carbonara', 12.00),
+                                                       ('Margherita Pizza', 15.75),
+                                                       ('Mushroom Risotto', 30.00),
+                                                       ('Pasta Con Pomodoro E Basilico', 25.65),
+                                                       ('Tiramisu', 20.00),
+                                                       ('Lasagna', 55.75),
+                                                       ('Pistachio Panna Cotta', 10.15),
+                                                       ('Panettone', 7.95);
 
 -- -----------------------------------------------------
 -- Table `food`.`cart`
