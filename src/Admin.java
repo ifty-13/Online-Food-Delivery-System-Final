@@ -246,7 +246,27 @@ public class Admin extends JFrame{
 	}
 
 
+	private void deleteButtonClick(ActionEvent e) {
+		dbConnect();
 
+		int i = 0;
+		DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+		int rc = model.getRowCount();
+		rtc = 0;
+		int row = jTable1.getSelectedRow();
+		String eve = model.getValueAt(row, 0).toString();
+
+		try {
+			int d = Integer.parseInt(eve);
+			PreparedStatement st = (PreparedStatement) con.prepareStatement("DELETE FROM food.details WHERE user_id = ?");
+			st.setInt(1,d);
+			int rowsAffected = st.executeUpdate();
+			model.removeRow(row);
+		}
+		catch(Exception except) {
+			JOptionPane.showMessageDialog(null,  except.getMessage());
+		}
+	}
 
 	public void updateButtonClick(ActionEvent e) {
 		dbConnect();
