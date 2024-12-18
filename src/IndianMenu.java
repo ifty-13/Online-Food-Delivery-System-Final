@@ -166,7 +166,60 @@ public class IndianMenu extends JFrame implements ActionListener{
         }
     }
 
-   
+    public void actionPerformed(ActionEvent e) {
+        try {
+            // Get the table model and row count
+            DefaultTableModel model = (DefaultTableModel) indiantable.getModel();
+            int rowCount = model.getRowCount();
+            int totalRowsAffected = 0;
+
+            // Establish a database connection
+            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/food", "root", "root")) {
+                for (int i = 0; i < rowCount; i++) {
+                    // Retrieve quantity from the table
+                    String quantityStr = indiantable.getValueAt(i, 3).toString();
+
+                    // Skip rows with invalid or zero quantities
+                    if (quantityStr == null || quantityStr.isEmpty() || Integer.parseInt(quantityStr) <= 0) {
+                        continue;
+                    }
+
+                    // Retrieve other data from the table
+                    String dish = indiantable.getValueAt(i, 1).toString();
+                    String priceStr = indiantable.getValueAt(i, 2).toString();
+                    float price = Float.parseFloat(priceStr);
+                    int quantity = Integer.parseInt(quantityStr);
+
+                    // SQL query to insert data into the database
+                    String sql = "INSERT INTO food.cart (item_name, item_price, item_quantity) VALUES (?, ?, ?)";
+                    try (PreparedStatement st = con.prepareStatement(sql)) {
+                        st.setString(1, dish);
+                        st.setFloat(2, price);
+                        st.setInt(3, quantity);
+
+                        // Execute the query and update the counter
+                        totalRowsAffected += st.executeUpdate();
+                    }
+                }
+            }
+
+            // Provide feedback based on the number of rows inserted
+            if (totalRowsAffected > 0) {
+                dispose(); // Close the current window
+                JOptionPane.showMessageDialog(null, "Items Added Successfully!");
+            } else {
+                JOptionPane.showMessageDialog(null, "No Items Added!", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Invalid number format in table!", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Database error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Unexpected error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     public static void main(String[] args) {
         new IndianMenu().setVisible(true);
