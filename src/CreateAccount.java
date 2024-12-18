@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class AddCard extends JFrame implements ActionListener{
+public class CreateAccount extends JFrame implements ActionListener{
 	private JLabel title;
 	private JLabel hold;
 	private JLabel cardno;
@@ -35,7 +35,7 @@ public class AddCard extends JFrame implements ActionListener{
 	private String cards[];
 	private JComboBox cardtype;
 	
-	public AddCard() {
+	public CreateAccount() {
 		super("Add Credit Card");
 		
 		title = new JLabel("Add Credit Card");
