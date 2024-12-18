@@ -23,7 +23,49 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 
+public class RestaurantManager extends JFrame {
+	private JButton italiantable;
+	private JButton frenchtable;
+	private JButton americantable;
+	private JButton indiantable;
+	private JButton updatebutton;
+	private JButton deletebutton;
+	private JButton insertbutton;
+	private JButton orders;
+	private JButton payments;
+	private JTable showtable;
+	private JScrollPane jScrollPane1;
+	private JLabel title;
+	private JLabel updat;
+	private JLabel insertitems;
+	private JLabel dishn;
+	private JLabel pric;
+	private JLabel tabletoinsert;
+	private JLabel deleteitems;
+	private JLabel bg;
+	private JTextField dish;
+	private JTextField pr;
 
+	static Connection con = null;
+	static Statement stmt = null;
+	static ResultSet rs = null;
+	static PreparedStatement st = null;
+	static PreparedStatement pst = null;
+
+	static int id[] = new int[20];
+	static float price[] = new float[20];
+	static String dishname[] = new String[20];
+
+	private String tables[];
+	private JComboBox tablename;
+
+	private String tables2[];
+	private JComboBox tablename2;
+
+	private String tables3[];
+	private JComboBox tablename3;
+
+	int rtc;
     
 	public RestaurantManager() {
 		super("Admin Dashboard");
