@@ -16,7 +16,56 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+public class Admin extends JFrame{
+	private JLabel title;
+	private JButton updatebutton;
+	private JButton addUserButton;
+	private JButton del;
+	private JButton orders;
+	private JButton payment;
+	private JButton rmanager;
+	private JTable jTable1;
+	private JScrollPane jScrollPane1;
+	private DefaultTableModel model;
 
+	static Connection con = null;
+	static Statement stmt = null;
+	static ResultSet rs = null;
+	static PreparedStatement pst = null;
+
+	int rtc;
+
+	public Admin() {
+		super("Admin");
+
+		try {
+			initComponents();
+			//getUserID();
+			DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+			dbConnect();
+			String sql="SELECT * FROM food.details";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while(rs.next())
+			{
+				int id = rs.getInt("user_id");
+				String uname = rs.getString("username");
+				String pass = rs.getString("passwd");
+				String em = rs.getString("email");
+				String fname = rs.getString("firstname");
+				String lname = rs.getString("lastname");
+				String ph = rs.getString("phone");
+				String st = rs.getString("state");
+				Object row[] = {id, uname, pass, em, fname, lname, ph, st};
+				model.addRow(row);
+			}
+		}
+		catch(Exception except) {
+			System.out.println("Error "+except);
+		}
+		// Center the frame
+		setLocationRelativeTo(null); // This will center the JFrame on the screen
+	}
 
 	public void initComponents() {
 
