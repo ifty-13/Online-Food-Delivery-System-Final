@@ -195,55 +195,7 @@ public class Admin extends JFrame{
 		getContentPane().add(rmanager);
 		rmanager.setBounds(430,560,180,40);
 	}
-	private void addUserButtonClick(ActionEvent e) {
-		dbConnect();
-
-		try {
-			String username = JOptionPane.showInputDialog("Enter Username:");
-			String password = JOptionPane.showInputDialog("Enter Password:");
-			String email = JOptionPane.showInputDialog("Enter Email:");
-			String firstname = JOptionPane.showInputDialog("Enter Firstname:");
-			String lastname = JOptionPane.showInputDialog("Enter Lastname:");
-			String phone = JOptionPane.showInputDialog("Enter Phone:");
-			String state = JOptionPane.showInputDialog("Enter State:");
-
-			if (username != null && password != null && email != null && firstname != null && lastname != null && phone != null && state != null) {
-				// Get the last ID from the database
-				pst = con.prepareStatement("SELECT MAX(user_id) FROM food.details");
-				ResultSet rs = pst.executeQuery();
-				int lastId = 0;
-				if (rs.next()) {
-					lastId = rs.getInt(1); // Fetch the maximum ID
-				}
-				int newId = lastId + 1; // Calculate the new ID
-
-				// Insert the new user into the database
-				pst = con.prepareStatement("INSERT INTO food.details (user_id, username, passwd, email, firstname, lastname, phone, state) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-				pst.setInt(1, newId);
-				pst.setString(2, username);
-				pst.setString(3, password);
-				pst.setString(4, email);
-				pst.setString(5, firstname);
-				pst.setString(6, lastname);
-				pst.setString(7, phone);
-				pst.setString(8, state);
-
-				int rowsAffected = pst.executeUpdate();
-
-				if (rowsAffected == 1) {
-					DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-					// Add a new row with the new ID
-					Object[] row = { Integer.toString(newId), username, password, email, firstname, lastname, phone, state};
-					model.addRow(row);
-					JOptionPane.showMessageDialog(null, "User added successfully!");
-				}
-			} else {
-				JOptionPane.showMessageDialog(null, "All fields are required.");
-			}
-		} catch (Exception except) {
-			JOptionPane.showMessageDialog(null, except.getMessage());
-		}
-	}
+	
 
 
 	private void deleteButtonClick(ActionEvent e) {
