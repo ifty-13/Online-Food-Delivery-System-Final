@@ -74,8 +74,203 @@ public class RestaurantManager extends JFrame {
 		// Center the frame
 		setLocationRelativeTo(null); // This will center the JFrame on the screen
 	}
-	
-	
+
+	public void initComponents() {
+		italiantable = new JButton("Italian Menu");
+		frenchtable = new JButton("French Menu");
+		americantable = new JButton("American Menu");
+		indiantable = new JButton("Indian Menu");
+		updatebutton = new JButton("Update Selected Row");
+		deletebutton = new JButton("Delete Selected Row");
+		insertbutton = new JButton("Insert Item");
+		orders = new JButton("View All Orders");
+		payments = new JButton("View All Payments");
+		jScrollPane1 = new JScrollPane();
+		showtable = new JTable();
+		title = new JLabel("Welcome Restaurant Manager");
+		updat = new JLabel("Select Menu");
+		deleteitems = new JLabel("Select Menu");
+		insertitems = new JLabel("Insert Items");
+		dishn = new JLabel("Dish Name");
+		tabletoinsert = new JLabel("Select Menu");
+		pric = new JLabel("Price");
+		dish = new JTextField();
+		pr = new JTextField();
+
+		setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+		setMinimumSize(new java.awt.Dimension(1000, 800));
+		setResizable(false);
+		getContentPane().setLayout(null);
+
+		updat.setForeground(new java.awt.Color(255, 255, 255));
+		getContentPane().add(updat);
+		updat.setBounds(70, 600, 90, 30);
+
+		tables= new String[]{"Italian","French","American","Indian"};
+		tablename = new JComboBox(tables);
+		getContentPane().add(tablename);
+		tablename.setBounds(160, 600, 140, 35);
+
+		getContentPane().add(updatebutton);
+		updatebutton.setBounds(310, 600, 160, 35);
+		updatebutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				updateButtonClick(e);
+			}
+		});
+
+		deleteitems.setForeground(new java.awt.Color(255, 255, 255));
+		getContentPane().add(deleteitems);
+		deleteitems.setBounds(70, 670, 90, 30);
+
+		tables3= new String[]{"Italian","French","American","Indian"};
+		tablename3 = new JComboBox(tables3);
+		getContentPane().add(tablename3);
+		tablename3.setBounds(160, 670, 140, 35);
+
+		getContentPane().add(deletebutton);
+		deletebutton.setBounds(310, 670, 160, 35);
+		deletebutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				deleteButtonClick(e);
+			}
+		});
+
+		title.setFont(new Font("Times New Roman", 0, 28));
+		title.setForeground(new java.awt.Color(255, 255, 255));
+		getContentPane().add(title);
+		title.setBounds(300, 50, 350, 40);
+
+		insertitems.setFont(new Font("Times New Roman", 0, 20));
+		insertitems.setForeground(new java.awt.Color(255, 255, 255));
+		getContentPane().add(insertitems);
+		insertitems.setBounds(670, 110, 140, 30);
+
+		dishn.setForeground(new java.awt.Color(255, 255, 255));
+		getContentPane().add(dishn);
+		dishn.setBounds(575, 160, 70, 30);
+
+		getContentPane().add(dish);
+		dish.setBounds(650, 160, 180, 30);
+
+		tabletoinsert.setForeground(new java.awt.Color(255, 255, 255));
+		getContentPane().add(tabletoinsert);
+		tabletoinsert.setBounds(565, 210, 90, 30);
+
+		tables2= new String[]{"Italian","French","American","Indian"};
+		tablename2 = new JComboBox(tables2);
+		getContentPane().add(tablename2);
+		tablename2.setBounds(650, 210, 140, 30);
+
+		pric.setForeground(new java.awt.Color(255, 255, 255));
+		getContentPane().add(pric);
+		pric.setBounds(600, 260, 70, 30);
+
+		getContentPane().add(pr);
+		pr.setBounds(650, 260, 70, 30);
+
+		getContentPane().add(insertbutton);
+		insertbutton.setBounds(660, 320, 150, 40);
+		insertbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				insertButtonClick(e);
+			}
+		});
+
+		getContentPane().add(orders);
+		orders.setBounds(520, 400, 150, 40);
+		orders.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AllOrders ao = new AllOrders();
+				ao.setVisible(true);
+			}
+		});
+
+		getContentPane().add(payments);
+		payments.setBounds(750, 400, 150, 40);
+		payments.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AllPayments ap = new AllPayments();
+				ap.setVisible(true);
+			}
+		});
+
+		showtable.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+		showtable.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 15)); // NOI18N
+		showtable.setForeground(new java.awt.Color(1, 1, 1));
+		showtable.setRowHeight(40);
+		showtable.setModel(new javax.swing.table.DefaultTableModel(
+				new Object [][] {
+
+				},
+				new String [] {
+						"ID", "Dish Name", "Price"
+				}
+		) {
+			boolean[] canEdit = new boolean [] {
+					false, true, true
+			};
+
+			public boolean isCellEditable(int rowIndex, int columnIndex) {
+				return canEdit [columnIndex];
+			}
+		});
+
+		showtable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+		showtable.setName(""); // NOI18N
+		jScrollPane1.setViewportView(showtable);
+
+		if (showtable.getColumnModel().getColumnCount() > 0) {
+			showtable.getColumnModel().getColumn(0).setResizable(false);
+			showtable.getColumnModel().getColumn(0).setPreferredWidth(80);
+			showtable.getColumnModel().getColumn(1).setResizable(false);
+			showtable.getColumnModel().getColumn(1).setPreferredWidth(160);
+			showtable.getColumnModel().getColumn(2).setResizable(false);
+			showtable.getColumnModel().getColumn(2).setPreferredWidth(80);
+		}
+
+		getContentPane().add(jScrollPane1);
+		jScrollPane1.setBounds(70, 110, 400, 400);
+
+		getContentPane().add(italiantable);
+		italiantable.setBounds(70, 530, 110, 40);
+		italiantable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				italianTableClick(e);
+			}
+		});
+
+		getContentPane().add(frenchtable);
+		frenchtable.setBounds(185, 530, 110, 40);
+		frenchtable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frenchTableClick(e);
+			}
+		});
+
+		getContentPane().add(indiantable);
+		indiantable.setBounds(300, 530, 110, 40);
+		indiantable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				indianTableClick(e);
+			}
+		});
+
+		getContentPane().add(americantable);
+		americantable.setBounds(415, 530, 130, 40);
+		americantable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				americanTableClick(e);
+			}
+		});
+
+		bg = new JLabel(new ImageIcon("src\\imgs\\kitchen.jpg"));
+		bg.setText("kitchen");
+		bg.setMaximumSize(new java.awt.Dimension(1000, 700));
+		bg.setMinimumSize(new java.awt.Dimension(1000, 700));
+		getContentPane().add(bg);
+		bg.setBounds(0, 0, 1000, 700);
+	}
 	
 	public static void connection() {
 		try {
