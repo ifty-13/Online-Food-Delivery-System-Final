@@ -312,7 +312,86 @@ public class RestaurantManager extends JFrame {
 		}
 	}
 
-	
+	public void frenchTableClick(ActionEvent e) {
+		try {
+			JTableHeader header = showtable.getTableHeader();
+			header.setEnabled(false);
+			DefaultTableModel model = (DefaultTableModel) showtable.getModel();
+			connection();
+			String q = "SELECT * FROM food.french;";
+			rs = stmt.executeQuery(q);
+			int s = model.getRowCount();
+			while (s != 0) {
+				model.removeRow(0);
+				s--;
+			}
+			while (rs.next()) {
+
+				int id = rs.getInt("FR_id");
+				String name = rs.getString("FR_name");
+				float price = rs.getFloat("FR_price");
+				Object row[] = {id, name, price};
+				model.addRow(row);
+
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(ItalianMenu.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	public void indianTableClick(ActionEvent e) {
+		try {
+			JTableHeader header = showtable.getTableHeader();
+			header.setEnabled(false);
+			DefaultTableModel model = (DefaultTableModel) showtable.getModel();
+			connection();
+			String q = "SELECT * FROM food.indian;";
+			rs = stmt.executeQuery(q);
+			int s = model.getRowCount();
+			while (s != 0) {
+				model.removeRow(0);
+				s--;
+			}
+			while (rs.next()) {
+
+				int id = rs.getInt("IND_id");
+				String name = rs.getString("IND_name");
+				float price = rs.getFloat("IND_price");
+				Object row[] = {id, name, price};
+				model.addRow(row);
+
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(ItalianMenu.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+
+	public void americanTableClick(ActionEvent e) {
+		try {
+			JTableHeader header = showtable.getTableHeader();
+			header.setEnabled(false);
+			DefaultTableModel model = (DefaultTableModel) showtable.getModel();
+			connection();
+			String q = "SELECT * FROM food.american;";
+			rs = stmt.executeQuery(q);
+			int s = model.getRowCount();
+			while (s != 0) {
+				model.removeRow(0);
+				s--;
+			}
+			while (rs.next()) {
+
+				int id = rs.getInt("AR_id");
+				String name = rs.getString("AR_name");
+				float price = rs.getFloat("AR_price");
+				Object row[] = {id, name, price};
+				model.addRow(row);
+
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(ItalianMenu.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 	
 	public void updateButtonClick(ActionEvent e) {
 		connection();
