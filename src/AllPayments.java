@@ -124,7 +124,7 @@ public class AllPayments extends JFrame{
 			}
 		});
 
-        /*
+
         try{
 			Login log = new Login();
 			//System.out.println("From Login "+log.user);
@@ -151,7 +151,7 @@ public class AllPayments extends JFrame{
 		catch(Exception except) {
 			System.out.println("Error "+except);
 		}
-		*/
+		
 	}
 
 	public void dbConnect() {
