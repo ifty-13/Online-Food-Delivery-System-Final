@@ -393,57 +393,7 @@ public class RestaurantManager extends JFrame {
 		}
 	}
 	
-	public void updateButtonClick(ActionEvent e) {
-		connection();
-		
-		int i = 0;
-        DefaultTableModel model = (DefaultTableModel) showtable.getModel();
-        int rc = model.getRowCount();
-        rtc = 0;
-        int row = showtable.getSelectedRow();
-        String did = model.getValueAt(row, 0).toString();
-		String dname = model.getValueAt(row, 1).toString();
-		String dprice = model.getValueAt(row, 2).toString();
-		String tablen = tablename.getItemAt(tablename.getSelectedIndex()).toString();
-		
-		try {
-			float c = Float.parseFloat(dprice);
-			int d = Integer.parseInt(did);
-			if(tablen == "Italian") {
-				pst = (PreparedStatement) con.prepareStatement("UPDATE food.italian SET ITA_name = ? WHERE ITA_id = ?");
-				st = (PreparedStatement) con.prepareStatement("UPDATE food.italian SET ITA_price = ? WHERE ITA_id = ?");
-			}
-			if(tablen == "French") {
-				pst = (PreparedStatement) con.prepareStatement("UPDATE food.french SET FR_name = ? WHERE FR_id = ?");
-				st = (PreparedStatement) con.prepareStatement("UPDATE food.french SET FR_price = ? WHERE FR_id = ?");
-			}
-			if(tablen == "American") {
-				pst = (PreparedStatement) con.prepareStatement("UPDATE food.american SET AR_name = ? WHERE AR_id = ?");
-				st = (PreparedStatement) con.prepareStatement("UPDATE food.american SET AR_price = ? WHERE AR_id = ?");
-			}
-			if(tablen == "Indian") {
-				pst = (PreparedStatement) con.prepareStatement("UPDATE food.indian SET IND_name = ? WHERE IND_id = ?");
-				st = (PreparedStatement) con.prepareStatement("UPDATE food.indian SET IND_price = ? WHERE IND_id = ?");
-			}
-				
-			pst.setString(1, dname);
-			pst.setInt(2, d);
-				
-			st.setFloat(1, c);
-			st.setInt(2, d);
-				
-			int rowsAffected = pst.executeUpdate();
-			int rowsAffected2 = st.executeUpdate();
-				
-			if(rowsAffected == 1 && rowsAffected2 == 1) {
-				JOptionPane.showMessageDialog(null, "Update Successful!");
-			}
-			
-		}
-		catch(Exception except) {
-			JOptionPane.showMessageDialog(null,  except.getMessage());
-		}
-	}
+	
 	
 	public void deleteButtonClick(ActionEvent e) {
 		connection();
