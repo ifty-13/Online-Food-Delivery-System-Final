@@ -151,7 +151,7 @@ public class AllPayments extends JFrame{
 		catch(Exception except) {
 			System.out.println("Error "+except);
 		}
-		
+
 	}
 
 	public void dbConnect() {
