@@ -159,38 +159,6 @@ public class ItalianMenu extends JFrame implements ActionListener{
         }
     }
 
-    public void actionPerformed(ActionEvent e) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            int i = 0;
-            DefaultTableModel model = (DefaultTableModel) itatable.getModel();
-            int rc = model.getRowCount();
-            rtc = 0;
-            connection();
-            //System.out.println(rc);
-            while (i != rc) {
-                d[i] = itatable.getValueAt(i, 3).toString();
-                if (Integer.parseInt(d[i]) > 0) {
-                    String dish = itatable.getValueAt(i, 1).toString();
-                    String pr = itatable.getValueAt(i, 2).toString();
-                    float pric = Float.parseFloat(pr);
-                    int quant = Integer.parseInt(d[i]);
-                    PreparedStatement st = (PreparedStatement) con.prepareStatement("INSERT INTO food.cart (item_name,item_price,item_quantity) VALUES (?,?,?);");
-                    st.setString(1, dish);
-                    st.setFloat(2, pric);
-                    st.setInt(3, quant);
-                    rowsAffected = st.executeUpdate();
-                }
-                i++;
-            }
-            if(rowsAffected == 1) {
-                dispose();
-                JOptionPane.showMessageDialog(null, "Items Added!");
-            }
-        }
-        catch(Exception except) {
-            System.out.println("Error "+except);
-        }
-    }
     public static void main(String[] args) {
         new ItalianMenu().setVisible(true);;
 
