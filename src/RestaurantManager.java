@@ -445,72 +445,7 @@ public class RestaurantManager extends JFrame {
 		}
 	}
 	
-	public void deleteButtonClick(ActionEvent e) {
-		connection();
-		
-		int i = 0;
-        DefaultTableModel model = (DefaultTableModel) showtable.getModel();
-        int rc = model.getRowCount();
-        rtc = 0;
-        int row = showtable.getSelectedRow();
-		String eve = model.getValueAt(row, 0).toString();
-		String tablena = tablename3.getItemAt(tablename3.getSelectedIndex()).toString();
-		
-		try {
-			int d = Integer.parseInt(eve);
-			if(tablena == "Italian") {
-				st = (PreparedStatement) con.prepareStatement("DELETE FROM food.italian WHERE ITA_id = ?");
-			}
-			if(tablena == "French") {
-				st = (PreparedStatement) con.prepareStatement("DELETE FROM food.french WHERE FR_id = ?");
-			}
-			if(tablena == "American") {
-				st = (PreparedStatement) con.prepareStatement("DELETE FROM food.american WHERE AR_id = ?");
-			}
-			if(tablena == "Indian") {
-				st = (PreparedStatement) con.prepareStatement("DELETE FROM food.indian WHERE IND_id = ?");
-			}
-			st.setInt(1,d);
-			int rowsAffected = st.executeUpdate();
-			model.removeRow(row);
-		}
-		catch(Exception except) {
-			JOptionPane.showMessageDialog(null,  except.getMessage());
-		}
-	}
 	
-	public void insertButtonClick(ActionEvent e) {
-		String dishname = dish.getText();
-		float cost = Float.parseFloat(String.valueOf(pr.getText().toString()));
-		String tablena = tablename2.getItemAt(tablename2.getSelectedIndex()).toString();
-		
-		try {
-			connection();
-			if(tablena == "Italian") {
-				st = (PreparedStatement) con.prepareStatement("INSERT INTO food.italian (ITA_name, ITA_price) VALUES (?,?)");
-			}
-			if(tablena == "French") {
-				st = (PreparedStatement) con.prepareStatement("INSERT INTO food.french (FR_name, FR_price) VALUES (?,?)");
-			}
-			if(tablena == "American") {
-				st = (PreparedStatement) con.prepareStatement("INSERT INTO food.american (AR_name, AR_price) VALUES (?,?)");
-			}
-			if(tablena == "Indian") {
-				st = (PreparedStatement) con.prepareStatement("INSERT INTO food.indian (IND_name, IND_price) VALUES (?,?)");
-			}
-			st.setString(1, dishname);
-			st.setFloat(2, cost);
-				
-			int i = st.executeUpdate();
-				
-			if(i == 1) {
-				JOptionPane.showMessageDialog(null, "Item Added!");
-			}
-		}
-		catch(Exception except) {
-			System.out.println("Error "+except);
-		}
-	}
 	
 	public static void main(String[]args) {
 		new RestaurantManager().setVisible(true);
