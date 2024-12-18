@@ -67,13 +67,7 @@ public class RestaurantManager extends JFrame {
 
 	int rtc;
     
-	public RestaurantManager() {
-		super("Admin Dashboard");
-		
-		initComponents();
-		// Center the frame
-		setLocationRelativeTo(null); // This will center the JFrame on the screen
-	}
+	
 	
 	public void initComponents() {
 		italiantable = new JButton("Italian Menu");
