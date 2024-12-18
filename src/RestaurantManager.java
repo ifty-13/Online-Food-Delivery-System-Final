@@ -284,8 +284,33 @@ public class RestaurantManager extends JFrame {
 
         }
 	}
-	
-	
+
+	public void italianTableClick(ActionEvent e) {
+		try {
+			JTableHeader header = showtable.getTableHeader();
+			header.setEnabled(false);
+			DefaultTableModel model = (DefaultTableModel) showtable.getModel();
+			connection();
+			String q = "SELECT * FROM food.italian;";
+			rs = stmt.executeQuery(q);
+			int s = model.getRowCount();
+			while (s != 0) {
+				model.removeRow(0);
+				s--;
+			}
+			while (rs.next()) {
+
+				int id = rs.getInt("ITA_id");
+				String name = rs.getString("ITA_name");
+				float price = rs.getFloat("ITA_price");
+				Object row[] = {id, name, price};
+				model.addRow(row);
+
+			}
+		} catch (SQLException ex) {
+			Logger.getLogger(ItalianMenu.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
 	
 	public void frenchTableClick(ActionEvent e) {
 		try {
