@@ -69,7 +69,38 @@ public class ForgotPassword extends JFrame implements ActionListener{
 	}
 
 	@Override
-	
+	public void actionPerformed(ActionEvent e) {
+		String usern = user.getText();
+		String newpassword = String.valueOf(newpass.getPassword());
+		String confirmpassword = String.valueOf(conpass.getPassword());
+
+		if(newpassword.equals(confirmpassword)) {
+			try {
+				Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/food","root","root");
+				PreparedStatement st = (PreparedStatement) conn.prepareStatement("UPDATE food.details SET passwd = ? WHERE username = ?");
+				st.setString(1, newpassword);
+				st.setString(2, usern);
+				int rowsAffected = st.executeUpdate();
+
+				if(rowsAffected == 1) {
+					this.dispose();
+					JOptionPane.showMessageDialog(null, "Password reset successfully");
+				}
+				else {
+					//this.dispose();
+					JOptionPane.showMessageDialog(null, "No such user exists in our records!", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+			catch(Exception except) {
+				System.out.println("Error "+except);
+			}
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Passwords don't match!", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+	}
+
 	public static void main(String[] args) {
 		new ForgotPassword();
 
