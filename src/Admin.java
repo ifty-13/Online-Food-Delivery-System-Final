@@ -268,7 +268,47 @@ public class Admin extends JFrame{
 		}
 	}
 
-	
+	public void updateButtonClick(ActionEvent e) {
+		dbConnect();
+
+		int i = 0;
+		DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+		int rc = model.getRowCount();
+		rtc = 0;
+		int row = jTable1.getSelectedRow();
+
+		String uid = model.getValueAt(row, 0).toString();
+		String uname = model.getValueAt(row, 1).toString();
+		String pass= model.getValueAt(row, 2).toString();
+		String ema = model.getValueAt(row, 3).toString();
+		String p = model.getValueAt(row, 6).toString();
+		String s = model.getValueAt(row, 7).toString();
+
+		try {
+			int id = Integer.parseInt(uid);
+			pst = (PreparedStatement) con.prepareStatement("UPDATE food.details SET username = ? , passwd = ? , email = ? , phone = ? , state = ? WHERE user_id = ?");
+
+
+			pst.setString(1, uname);
+			pst.setString(2, pass);
+			pst.setString(3, ema);
+			pst.setString(4, p);
+			pst.setString(5, s);
+			pst.setInt(6, id);
+
+
+			int rowsAffected = pst.executeUpdate();
+
+
+			if(rowsAffected == 1) {
+				JOptionPane.showMessageDialog(null, "Update Successful!");
+			}
+
+		}
+		catch(Exception except) {
+			JOptionPane.showMessageDialog(null,  except.getMessage());
+		}
+	}
 
 	public void dbConnect() {
 		try {
