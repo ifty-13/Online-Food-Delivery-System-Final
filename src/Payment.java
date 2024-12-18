@@ -217,7 +217,46 @@ public class Payment extends JFrame{
 
 		//System.out.println(holder+" "+cardnumber+" "+cardt+" "+secnum+" "+exdate+" "+cont+" "+cart.total);
 
-		
+		try {
+			PreparedStatement st = (PreparedStatement) con.prepareStatement("SELECT balance from food.card_details WHERE holder = ?");
+			st.setString(1, holder);
+			rs=st.executeQuery();
+			while(rs.next()) {
+				holderbal = rs.getFloat("balance");
+			}
+			if(holderbal >= cart.total) {
+				PreparedStatement pst = (PreparedStatement) con.prepareStatement("UPDATE food.card_details SET balance = (balance - ?) WHERE holder = ? AND card_no = ? AND card_type = ? AND cvv = ? AND exp = ? AND country = ?");
+				pst.setFloat(1, cart.total);
+				pst.setString(2, holder);
+				pst.setString(3, cardnumber);
+				pst.setString(4, cardt);
+				pst.setString(5, secnum);
+				pst.setString(6, exdate);
+				pst.setString(7, cont);
+
+				int rowsAffected = pst.executeUpdate();
+
+				if(rowsAffected == 1) {
+					ThankYou ty = new ThankYou();
+					updateOrderDetails();
+					insertIntoPayment();
+					JOptionPane.showMessageDialog(null, "Payment Successful!");
+					ty.setVisible(true);
+				}
+				else {
+					//this.dispose();
+					JOptionPane.showMessageDialog(null, "Please check all details carefully", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Insufficient Balance", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		catch(Exception except) {
+			System.out.println("Error "+except);
+		}
+	}
+
 	public static void main(String[] args) {
 		new Payment().setVisible(true);
 
