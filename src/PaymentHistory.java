@@ -30,7 +30,38 @@ public class PaymentHistory extends JFrame{
 	static Statement stmt = null;
 	static ResultSet rs = null;
 
-	
+	public PaymentHistory() {
+		super("Payment History");
+
+		try{
+			initComponents();
+			DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+			dbConnect();
+			Login log = new Login();
+			//System.out.println("From Login "+log.user);
+			PreparedStatement pst = (PreparedStatement) con.prepareStatement("SELECT * FROM food.payment WHERE username = ?");
+			pst.setString(1, log.user);
+			ResultSet rs = pst.executeQuery();
+
+			while(rs.next()){
+				//System.out.println("Query executed");
+
+				int id = rs.getInt("payment_id");
+				String user = rs.getString("username");
+				String card = rs.getString("card_type");
+				float amt = rs.getFloat("amount_spent");
+				String datetime = rs.getString("time_stamp");
+
+				//System.out.println(ema + " "+ first+" "+last+" "+pho+" "+sta);
+
+				Object row[] = {id, user, card, amt, datetime};
+				model.addRow(row);
+			}
+		}
+		catch(Exception except) {
+			System.out.println("Error "+except);
+		}
+	}
 
 	public void initComponents() {
 		jTable1 = new JTable();
